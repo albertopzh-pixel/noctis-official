@@ -34,8 +34,7 @@
 <header class="nav" id="nav">
   <div class="nav__inner">
     <a href="#" class="nav__logo">NØ<em>CTIS</em></a>
-    <!-- BOTÓN MENÚ: AHORA LLEVA A VER LAS FOTOS -->
-    <a href="#coleccion" class="nav__cta">Ver colección</a>
+    <a href="https://wa.me/541136269907?text=Hola%2C%20quiero%20consultar%20por%20una%20funda%20N%C3%98CTIS.%20Mi%20modelo%20es..." target="_blank" class="nav__cta">Reservar</a>
   </div>
 </header>
 
@@ -49,8 +48,7 @@
       <h1 class="hero__title reveal">Protegé tu<br><em>identidad.</em></h1>
       <p class="hero__sub reveal">Fundas diseñadas para quienes no se conforman con lo genérico. Oscuridad, detalle y carácter en cada pieza.</p>
       
-      <!-- BOTÓN 1 (HERO) → BAJA A LA COLECCIÓN PARA VER FOTOS -->
-      <a href="#coleccion" class="btn btn--primary reveal" style="margin-top: 1.8rem;">Reservar ahora</a>
+      <a href="https://wa.me/541136269907?text=Hola%2C%20quiero%20consultar%20por%20una%20funda%20N%C3%98CTIS.%20Mi%20modelo%20es..." target="_blank" class="btn btn--primary reveal" style="margin-top: 1.8rem;">Reservar ahora</a>
 
       <div class="hero__product reveal">
         <img src="https://i.postimg.cc/8ccVcnW1/lv-0-20260718120146.jpg" alt="Funda NØCTIS Signature Pack" class="hero__product-img">
@@ -58,57 +56,63 @@
     </div>
   </section>
 
-  <!-- ===================== COLECCIÓN ===================== -->
+  <!-- ===================== COLECCIÓN (CON LIGHTBOX) ===================== -->
   <section id="coleccion" class="coleccion">
     <div class="section-head reveal">
       <span class="eyebrow">Colección</span>
-      <h2 class="section-title">Cuatro piezas.<br>Un mismo carácter.</h2>
+      <h2 class="section-title">Pedidos en curso.<br>Hechos con intención.</h2>
     </div>
 
     <div class="product-grid">
-      <article class="product-card reveal">
+      
+      <!-- TARJETA 1: CROWN / BLACK -->
+      <article class="product-card reveal" data-gallery="black" style="cursor: pointer;">
         <div class="product-card__img">
-          <img src="https://i.postimg.cc/kgjDhx5g/lv-0-20260718192435.jpg" alt="Funda NØCTIS Built In Silence, diseño galaxia con corona" loading="lazy">
+          <img src="https://i.postimg.cc/15X6qhfz/IMG-20260817-WA1525-1.jpg" alt="Crown Black">
         </div>
         <div class="product-card__info">
-          <h3>Built In Silence</h3>
-          <p>Edición galaxia, borde reforzado</p>
-          <span class="product-card__price"></span>
+          <h3>CROWN / BLACK</h3>
+          <p>Acabado galaxia</p>
+          <span class="product-card__price">$25.000 ARS</span>
         </div>
       </article>
 
-      <article class="product-card reveal">
+      <!-- TARJETA 2: CROWN / WHITE -->
+      <article class="product-card reveal" data-gallery="white" style="cursor: pointer;">
         <div class="product-card__img">
-          <img src="https://i.postimg.cc/wM278Pp4/lv-0-20260718123310.jpg" alt="Detalle macro de la funda NØCTIS, borde de aluminio y estampado galaxia" loading="lazy">
+          <img src="https://i.postimg.cc/RVvJz3r4/IMG-20260815-WA3100-1.jpg" alt="Crown White">
         </div>
         <div class="product-card__info">
-          <h3>Macro Detail</h3>
-          <p>Borde reforzado y acabado galaxia</p>
-          <span class="product-card__price"></span>
+          <h3>CROWN / WHITE</h3>
+          <p>Acabado mármol blanco</p>
+          <span class="product-card__price">$25.000 ARS</span>
         </div>
       </article>
 
-      <article class="product-card reveal">
+      <!-- TARJETA 3: CROWN / GOLD -->
+      <article class="product-card reveal" data-gallery="gold" style="cursor: pointer;">
         <div class="product-card__img">
-          <img src="https://i.postimg.cc/8ccVcnW1/lv-0-20260718120146.jpg" alt="Funda NØCTIS junto a su packaging sellado" loading="lazy">
+          <img src="https://i.postimg.cc/Fs1mcm3h/lv-0-20260808131030-1.jpg" alt="Crown Gold">
         </div>
         <div class="product-card__info">
-          <h3>Signature Pack</h3>
-          <p>Incluye empaque premium sellado</p>
-          <span class="product-card__price"></span>
+          <h3>CROWN / GOLD</h3>
+          <p>Acabado negro y dorado</p>
+          <span class="product-card__price">$25.000 ARS</span>
         </div>
       </article>
 
-      <article class="product-card reveal">
-        <div class="product-card__img">
-          <img src="https://i.postimg.cc/pTVwc1sR/lv-0-20260718122710.jpg" alt="Funda NØCTIS vista superior con corona grabada" loading="lazy">
+      <!-- TARJETA 4: PRÓXIMAMENTE -->
+      <article class="product-card reveal" style="opacity: 0.6; cursor: default;">
+        <div class="product-card__img" style="background: #131316; display: flex; align-items: center; justify-content: center;">
+          <span style="font-family: var(--font-mono); color: var(--muted-2); font-size: 0.8rem;">PRÓXIMAMENTE</span>
         </div>
         <div class="product-card__info">
-          <h3>Crown Edition</h3>
-          <p>Grabado de corona en alto detalle</p>
-          <span class="product-card__price"></span>
+          <h3>CROWN / SILVER</h3>
+          <p>Nuevo diseño en camino</p>
+          <span class="product-card__price">-</span>
         </div>
       </article>
+
     </div>
   </section>
 
@@ -118,7 +122,6 @@
       <span class="eyebrow">Cómo funciona</span>
       <h2 class="section-title">Tres pasos.<br>Cero complicaciones.</h2>
     </div>
-
     <div class="process-grid">
       <div class="process-card reveal">
         <svg class="process-card__icon" width="30" height="30" viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="10" stroke="#F5F5F7" stroke-width="1.4"/><path d="M15 10v5l3.5 3.5" stroke="#F5F5F7" stroke-width="1.4" stroke-linecap="round"/></svg>
@@ -130,7 +133,7 @@
         <svg class="process-card__icon" width="30" height="30" viewBox="0 0 30 30" fill="none"><path d="M7 23l3-1 12-12-2-2-12 12-1 3z" stroke="#F5F5F7" stroke-width="1.4" stroke-linejoin="round"/></svg>
         <span class="process-card__num">02</span>
         <h3>Diseñamos</h3>
-        <p>Adaptamos cada diseño NØCTIS al modelo de tu teléfono.</p>
+        <p>Adaptamos el arte exacto al modelo de tu teléfono.</p>
       </div>
       <div class="process-card reveal">
         <svg class="process-card__icon" width="30" height="30" viewBox="0 0 30 30" fill="none"><rect x="7" y="7" width="16" height="16" rx="2" stroke="#F5F5F7" stroke-width="1.4"/><path d="M11 15l3 3 5-6" stroke="#F5F5F7" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -145,12 +148,13 @@
   <section id="reserva" class="proceso" style="border-top: 1px solid var(--line);">
     <div class="section-head reveal">
       <span class="eyebrow">Reserva</span>
-      <h2 class="section-title">Asegurá tu pieza.<br>Edición limitada.</h2>
-      <p style="color: var(--muted); margin-top: 0.8rem; font-size: 0.95rem; max-width: 400px; margin-inline: auto;">Producción en pequeñas cantidades.</p>
+      <h2 class="section-title">Diseñá la tuya.</h2>
+      <p style="color: var(--muted); margin-top: 0.8rem; font-size: 0.95rem; max-width: 400px; margin-inline: auto;">Elegí tu estilo, decinos qué teléfono tenés y preparamos tu funda bajo pedido.</p>
+      <div style="color: var(--silver-2); font-family: var(--font-mono); font-size: 0.9rem; margin-top: 0.5rem;">$25.000 ARS</div>
+      <p style="color: var(--muted); font-size: 0.75rem; margin-top: 0.2rem;">Producción bajo pedido · Consultá disponibilidad de tu modelo.</p>
     </div>
     <div style="text-align: center; margin-top: 1.5rem;">
-      <!-- BOTÓN 2 (SECCIÓN RESERVA) → VA A WHATSAPP CON EL NUEVO MENSAJE -->
-      <a href="https://wa.me/541136269907?text=Hola%2C%20vi%20la%20web%20de%20N%C3%98CTIS%20y%20me%20interesa%20el%20Drop%2001.%20%C2%BFTienen%20disponibilidad%20para%20mi%20modelo%20de%20tel%C3%A9fono%3F" target="_blank" class="btn btn--primary btn--lg reveal">Reservar ahora</a>
+      <a href="https://wa.me/541136269907?text=Hola%2C%20quiero%20consultar%20por%20una%20funda%20N%C3%98CTIS.%20Mi%20modelo%20es..." target="_blank" class="btn btn--primary btn--lg reveal">Consultar por WhatsApp</a>
     </div>
   </section>
 
@@ -166,8 +170,8 @@
         <p style="color: var(--muted); font-size: 0.85rem; margin-top: 0.3rem;">Mercado Pago, transferencia o débito.</p>
       </div>
       <div class="reveal">
-        <span style="font-family: var(--font-display); font-size: 1.1rem; display: block;">📦 Embalaje impecable</span>
-        <p style="color: var(--muted); font-size: 0.85rem; margin-top: 0.3rem;">Empaque diseñado para llegar en perfectas condiciones.</p>
+        <span style="font-family: var(--font-display); font-size: 1.1rem; display: block;">📦 Embalaje premium</span>
+        <p style="color: var(--muted); font-size: 0.85rem; margin-top: 0.3rem;">Cada funda llega en su paquete rígido y sellado.</p>
       </div>
     </div>
   </section>
@@ -175,8 +179,7 @@
   <!-- ===================== CTA FINAL ===================== -->
   <section id="cta" class="cta-final">
     <p class="cta-final__phrase reveal">No llevás una funda.<br><em>Llevás una identidad.</em></p>
-    <!-- BOTÓN 3 (CTA FINAL) → VA A WHATSAPP CON EL NUEVO MENSAJE -->
-    <a href="https://wa.me/541136269907?text=Hola%2C%20vi%20la%20web%20de%20N%C3%98CTIS%20y%20me%20interesa%20el%20Drop%2001.%20%C2%BFTienen%20disponibilidad%20para%20mi%20modelo%20de%20tel%C3%A9fono%3F" target="_blank" class="btn btn--primary btn--lg reveal">Reservar mi funda</a>
+    <a href="https://wa.me/541136269907?text=Hola%2C%20quiero%20consultar%20por%20una%20funda%20N%C3%98CTIS.%20Mi%20modelo%20es..." target="_blank" class="btn btn--primary btn--lg reveal">Consultar por WhatsApp</a>
   </section>
 
 </main>
@@ -187,11 +190,20 @@
   <div class="footer__social">
     <a href="https://www.instagram.com/nctis.pm" target="_blank" aria-label="Instagram">Instagram</a>
     <a href="https://www.tiktok.com/@noctis.cp" target="_blank" aria-label="TikTok">TikTok</a>
-    <!-- BOTÓN FOOTER → VA A WHATSAPP CON EL NUEVO MENSAJE TAMBIÉN -->
-    <a href="https://wa.me/541136269907?text=Hola%2C%20vi%20la%20web%20de%20N%C3%98CTIS%20y%20me%20interesa%20el%20Drop%2001.%20%C2%BFTienen%20disponibilidad%20para%20mi%20modelo%20de%20tel%C3%A9fono%3F" target="_blank" aria-label="WhatsApp">WhatsApp</a>
+    <a href="https://wa.me/541136269907" target="_blank" aria-label="WhatsApp">WhatsApp</a>
   </div>
   <span class="footer__copy">© 2026 NØCTIS. Hecho en Argentina.</span>
 </footer>
+
+<!-- ===================== LIGHTBOX MODAL ===================== -->
+<div id="lightbox-overlay" class="lightbox-overlay" style="display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; backdrop-filter: blur(8px);">
+  <button class="lightbox-close" id="lightbox-close" style="position: absolute; top: 20px; right: 30px; color: #fff; font-size: 2.5rem; background: none; border: none; cursor: pointer; z-index: 10;">✕</button>
+  <button class="lightbox-nav lightbox-prev" id="lightbox-prev" style="position: absolute; left: 20px; color: #fff; font-size: 3rem; background: none; border: none; cursor: pointer; z-index: 10; opacity: 0.6; transition: opacity 0.3s;">‹</button>
+  <button class="lightbox-nav lightbox-next" id="lightbox-next" style="position: absolute; right: 20px; color: #fff; font-size: 3rem; background: none; border: none; cursor: pointer; z-index: 10; opacity: 0.6; transition: opacity 0.3s;">›</button>
+  <div class="lightbox-content" style="max-width: 90vw; max-height: 90vh; display: flex; align-items: center; justify-content: center;">
+    <img id="lightbox-image" src="" alt="" style="max-width: 100%; max-height: 90vh; object-fit: contain; border-radius: 12px;">
+  </div>
+</div>
 
 <!-- ===================== LIBRERÍAS ===================== -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
