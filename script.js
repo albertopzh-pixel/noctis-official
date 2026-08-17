@@ -1,7 +1,7 @@
 /* ==================================================================
    NØCTIS — script.js
    Loader cinematográfico · Canvas de partículas · Cursor premium ·
-   Scroll reveal (IntersectionObserver) · GSAP opcional para detalles
+   Scroll reveal · GSAP · LIGHTBOX MODAL
    ================================================================== */
 
 (function () {
@@ -36,7 +36,7 @@
     requestAnimationFrame(tick);
   })();
 
-  /* ---------------- CURSOR PREMIUM (dot + follower con lerp) ---------------- */
+  /* ---------------- CURSOR PREMIUM ---------------- */
   if (!isTouch) {
     const dot = document.getElementById('cursorDot');
     const follower = document.getElementById('cursorFollower');
@@ -68,7 +68,7 @@
     });
   }
 
-  /* ---------------- CANVAS DE PARTÍCULAS (hero) ---------------- */
+  /* ---------------- CANVAS DE PARTÍCULAS ---------------- */
   const canvas = document.getElementById('particleCanvas');
   const ctx = canvas.getContext('2d');
   const heroSection = document.getElementById('hero');
@@ -82,13 +82,12 @@
   let heroVisible = true;
   let rafId = null;
 
-  // menos partículas en pantallas chicas para no sacrificar rendimiento
   function particleCount() {
     return window.innerWidth < 640 ? 45 : 80;
   }
 
   function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2); // cap DPR: performance
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
     w = canvas.clientWidth = heroSection.offsetWidth;
     h = canvas.clientHeight = heroSection.offsetHeight;
     canvas.width = w * dpr;
@@ -111,11 +110,9 @@
   function step() {
     ctx.clearRect(0, 0, w, h);
     for (const p of particles) {
-      // deriva suave
       p.x += p.vx;
       p.y += p.vy;
 
-      // repulsión del mouse
       const dx = p.x - mouse.x;
       const dy = p.y - mouse.y;
       const dist = Math.hypot(dx, dy);
@@ -126,7 +123,6 @@
         p.y += (dy / (dist || 1)) * force * 3.2;
       }
 
-      // rebote en bordes
       if (p.x < 0 || p.x > w) p.vx *= -1;
       if (p.y < 0 || p.y > h) p.vy *= -1;
       p.x = Math.max(0, Math.min(w, p.x));
@@ -141,7 +137,7 @@
   }
 
   function initParticles() {
-    if (reducedMotion) return; // respeta accesibilidad, no animamos
+    if (reducedMotion) return;
     resize();
     makeParticles();
     if (!rafId) rafId = requestAnimationFrame(step);
@@ -159,7 +155,6 @@
   });
   heroSection.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
 
-  // pausa el canvas si el hero sale de pantalla: cuida rendimiento en scroll largo
   if ('IntersectionObserver' in window) {
     const heroObserver = new IntersectionObserver(([entry]) => {
       heroVisible = entry.isIntersecting;
@@ -187,7 +182,7 @@
     revealEls.forEach((el) => el.classList.add('is-visible'));
   }
 
-  /* ---------------- GSAP: detalle sutil en nav al hacer scroll ---------------- */
+  /* ---------------- GSAP: NAV SCROLL ---------------- */
   if (window.gsap && window.ScrollTrigger && !reducedMotion) {
     gsap.registerPlugin(ScrollTrigger);
     gsap.to('.nav', {
@@ -196,4 +191,87 @@
       scrollTrigger: { trigger: document.body, start: '80px top', toggleActions: 'play none none reverse' }
     });
   }
+
+  /* ================= LIGHTBOX MODAL ================= */
+  (function initLightbox() {
+    const overlay = document.getElementById('lightbox-overlay');
+    const lightboxImg = document.getElementById('lightbox-image');
+    const closeBtn = document.getElementById('lightbox-close');
+    const prevBtn = document.getElementById('lightbox-prev');
+    const nextBtn = document.getElementById('lightbox-next');
+
+    const galleries = {
+      'black': [
+        'https://i.postimg.cc/15X6qhfz/IMG-20260817-WA1525-1.jpg',
+        'https://i.postimg.cc/L5bJT5nL/IMG-20260817-WA6935-2.jpg',
+        'https://i.postimg.cc/cJv85Pp0/IMG-20260817-WA8052-1.jpg'
+      ],
+      'white': [
+        'https://i.postimg.cc/RVvJz3r4/IMG-20260815-WA3100-1.jpg',
+        'https://i.postimg.cc/L645brPW/IMG-20260815-WA1014-1.jpg',
+        'https://i.postimg.cc/7hHHj2C4/IMG-20260815-WA3781-1.jpg'
+      ],
+      'gold': [
+        'https://i.postimg.cc/Fs1mcm3h/lv-0-20260808131030-1.jpg',
+        'https://i.postimg.cc/FRD5dnKn/lv-0-20260812152732-1.jpg',
+        'https://i.postimg.cc/g0WfMPXw/lv-0-20260808131148-1.jpg'
+      ]
+    };
+
+    let currentGalleryId = '';
+    let currentIndex = 0;
+
+    function openGallery(galleryId, index = 0) {
+      const images = galleries[galleryId];
+      if (!images || images.length === 0) return;
+      
+      currentGalleryId = galleryId;
+      currentIndex = index;
+      lightboxImg.src = images[index];
+      overlay.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeGallery() {
+      overlay.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    function changeImage(direction) {
+      const images = galleries[currentGalleryId];
+      if (!images) return;
+      currentIndex += direction;
+      if (currentIndex < 0) currentIndex = images.length - 1;
+      if (currentIndex >= images.length) currentIndex = 0;
+      lightboxImg.src = images[currentIndex];
+    }
+
+    document.querySelectorAll('.product-card[data-gallery]').forEach(card => {
+      card.addEventListener('click', () => {
+        const galleryId = card.getAttribute('data-gallery');
+        if (galleryId) openGallery(galleryId, 0);
+      });
+    });
+
+    closeBtn.addEventListener('click', closeGallery);
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeGallery();
+    });
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      changeImage(-1);
+    });
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      changeImage(1);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (overlay.style.display === 'flex') {
+        if (e.key === 'Escape') closeGallery();
+        if (e.key === 'ArrowLeft') changeImage(-1);
+        if (e.key === 'ArrowRight') changeImage(1);
+      }
+    });
+  })();
 })();
